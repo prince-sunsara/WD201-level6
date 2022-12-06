@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
 const app = express();
 const { Todo } = require("./models");
@@ -33,6 +34,7 @@ app.put("/todos/:id/markAsCompleted", async (request, response) => {
   const todo = await Todo.findByPk(request.params.id);
   try {
     const updatedTodo = await todo.markAsCompleted();
+    console.log(updatedTodo);
     return response.json(updatedTodo);
   } catch (error) {
     console.log(error);
